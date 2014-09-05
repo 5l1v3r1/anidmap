@@ -1,0 +1,3 @@
+#include "../../src/allocators/id-allocator.hpp"
+#include "../../src/allocators/pool-id-allocator.hpp"
+#include "../../src/allocators/step-id-allocator.hpp"
