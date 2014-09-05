@@ -25,10 +25,16 @@ Currently, the *StepIdMap* and *PoolIdMap* classes serve as *IdMap* subclasses.
 
 **anidmap** uses [ansa](https://github.com/unixpickle/ansa) for its locking mechanism.
 
+The following standard headers are required:
+
+ * &lt;cstdint&gt; - integer types such as `int_fast32_t`
+ * &lt;cassert&gt; - `assert` macro
+ * &lt;cstddef&gt; - `NULL` definition
+
 # Configuration
 
-You must create an include file (by whatever means necessary) that goes by the name of `<anidmap/lock>`. This header must define a class called `anidmap::Lock` that is a subclass of `ansa::Lock`. The `anidmap::Lock` class will be used for all synchronization in the library. This library includes this header file as follows:
+You may notice that anidmap includes a file that it does not provide itself:
 
     #include <anidmap/lock>
 
-Usually, you will be able to achieve this using the GCC/Clang `-I` directive.
+You must create this include file. It must define a class called `anidmap::Lock` that is a subclass of `ansa::Lock`. The `anidmap::Lock` class will be used for all synchronization in the library. Usually, you will be able to achieve this using the GCC/Clang `-I` directive. See the lock implementation based on stdc++ in [test/stdcpp-lock.cpp](test/stdcpp-lock.cpp).

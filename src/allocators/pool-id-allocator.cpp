@@ -1,5 +1,5 @@
 #include "pool-id-allocator.hpp"
-#include <ansa/critical>
+#include <cassert>
 
 namespace anidmap {
 
