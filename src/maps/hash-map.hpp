@@ -39,11 +39,11 @@ public:
     return objectCount;
   }
   
-  virtual bool FindUnusedIds(Identifier upperBound, Identifier & startOut,
-                             Identifier & endOut) {
+  virtual bool FindUnusedIds(Identifier lowerBound, Identifier upperBound,
+                             Identifier & startOut, Identifier & endOut) {
     ansa::ScopedLock scope(lock);
     startOut = endOut = 0;
-    for (Identifier i = 0; i < upperBound;) {
+    for (Identifier i = lowerBound; i < upperBound;) {
       Identifier end = SmallestAfter(i, upperBound);
       if (end - i > endOut - startOut) {
         startOut = i;

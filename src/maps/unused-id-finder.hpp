@@ -11,11 +11,15 @@ namespace anidmap {
 class UnusedIdFinder {
 public:
   /**
-   * Find a range of identifiers lower than [upperBound] that are not set in
-   * some sort of map.
+   * Find an unused range of identifiers between [start] (inclusive) and
+   * [upperBound] (exclusive).
+   *
+   * If no identifiers are free in the range, `false` should be returned.
+   * Otherwise, [startOut] and [endOut] should be set and `true` should be
+   * returned.
    */
-  virtual bool FindUnusedIds(Identifier upperBound, Identifier & startOut,
-                             Identifier & endOut) = 0;
+  virtual bool FindUnusedIds(Identifier start, Identifier upperBound,
+                             Identifier & startOut, Identifier & endOut) = 0;
 };
 
 }
