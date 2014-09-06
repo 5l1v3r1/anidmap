@@ -1,7 +1,7 @@
 #ifndef __ANIDMAP_STEP_ID_MAP_HPP__
 #define __ANIDMAP_STEP_ID_MAP_HPP__
 
-#include "../maps/id-map.hpp"
+#include "id-map.hpp"
 #include "../allocators/step-id-allocator.hpp"
 
 namespace anidmap {

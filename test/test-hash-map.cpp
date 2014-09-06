@@ -1,31 +1,11 @@
 #include "../src/maps/hash-map.hpp"
-#include "../src/id-object.hpp"
+#include "mapped-object.hpp"
 #include <iostream>
 
 using namespace anidmap;
 using std::cout;
 using std::endl;
 using std::flush;
-
-class MappedObject : public IdObject {
-public:
-  MappedObject() : hashMapLink(*this) {
-  }
-  
-  MappedObject(Identifier id) : hashMapLink(*this) {
-    SetIdentifier(id);
-  }
-  
-  MappedObject & operator=(const MappedObject & obj) {
-    SetIdentifier(obj.GetIdentifier());
-    return *this;
-  }
-  
-protected:
-  template <class T, int N>
-  friend class HashMap;
-  ansa::LinkedList<MappedObject>::Link hashMapLink;
-};
 
 void TestAdd();
 void TestFind();
