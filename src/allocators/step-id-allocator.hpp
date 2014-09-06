@@ -2,7 +2,7 @@
 #define __ANIDMAP_STEP_ID_ALLOCATOR_HPP__
 
 #include "id-allocator.hpp"
-#include "../map/unused-id-finder.hpp"
+#include "../maps/unused-id-finder.hpp"
 #include <anidmap/lock>
 
 namespace anidmap {

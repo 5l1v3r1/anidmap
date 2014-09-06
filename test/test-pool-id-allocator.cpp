@@ -8,9 +8,11 @@ using std::endl;
 using std::flush;
 
 void TestStackedAllocation();
+void TestBoundedAllocation();
 
 int main() {
   TestStackedAllocation();
+  TestBoundedAllocation();
   return 0;
 }
 
@@ -47,6 +49,28 @@ void TestStackedAllocation() {
   
   // check cap again
   assert(!allocator.Alloc(ident));
+  
+  cout << "passed!" << endl;
+}
+
+void TestBoundedAllocation() {
+  cout << "testing PoolIdAllocator::[Alloc/Free]() [bounded] ... " << flush;
+  
+  PoolIdAllocator allocator(10);
+  Identifier ident;
+  
+  assert(allocator.Alloc(ident));
+  assert(ident == 0);
+  assert(!allocator.Alloc(ident, 1));
+  assert(allocator.Alloc(ident, 2));
+  assert(ident == 1);
+  assert(!allocator.Alloc(ident, 2));
+  assert(allocator.Alloc(ident, 3));
+  assert(ident == 2);
+  allocator.Free(2);
+  assert(!allocator.Alloc(ident, 2));
+  assert(allocator.Alloc(ident, 3));
+  assert(ident == 2);
   
   cout << "passed!" << endl;
 }
