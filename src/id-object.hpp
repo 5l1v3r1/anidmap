@@ -2,7 +2,7 @@
 #define __ANIDMAP_ID_OBJECT_HPP__
 
 #include "identifier.hpp"
-#include "maps/id-map.hpp"
+#include "id-maps/id-map.hpp"
 
 namespace anidmap {
 

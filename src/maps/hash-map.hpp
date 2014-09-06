@@ -43,18 +43,15 @@ public:
                              Identifier & endOut) {
     ansa::ScopedLock scope(lock);
     startOut = endOut = 0;
-    for (int i = 0; i < GetBucketCount(); ++i) {
-      auto & bucket = GetBucket(i);
-      for (auto j = bucket.GetStart(); j != bucket.GetEnd(); ++j) {
-        Identifier start = (*j).GetIdentifier() + 1;
-        Identifier end = SmallestAfter(start, upperBound);
-        if (end - start > endOut - startOut) {
-          startOut = start;
-          endOut = end;
-        }
+    for (Identifier i = 0; i < upperBound;) {
+      Identifier end = SmallestAfter(i, upperBound);
+      if (end - i > endOut - startOut) {
+        startOut = i;
+        endOut = end;
       }
+      i = end + 1;
     }
-    return endOut > startOut;
+    return startOut != endOut;
   }
   
   int GetBucketCount() {
@@ -68,7 +65,7 @@ public:
 protected:
   Lock lock;
   ansa::LinkedList<T> buckets[BucketCount];
-  int objectCount;
+  int objectCount = 0;
   
   Identifier SmallestAfter(Identifier ident, Identifier upperBound) {
     Identifier smallest = upperBound;

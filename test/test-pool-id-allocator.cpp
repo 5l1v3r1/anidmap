@@ -5,6 +5,7 @@
 using namespace anidmap;
 using std::cout;
 using std::endl;
+using std::flush;
 
 void TestStackedAllocation();
 
@@ -14,8 +15,7 @@ int main() {
 }
 
 void TestStackedAllocation() {
-  cout << "testing PoolIdAllocator::[Alloc/Free]() [stacked] ... ";
-  cout.flush();
+  cout << "testing PoolIdAllocator::[Alloc/Free]() [stacked] ... " << flush;
   
   PoolIdAllocator allocator(10);
   Identifier ident;
