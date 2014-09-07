@@ -49,6 +49,7 @@ public:
         startOut = i;
         endOut = end;
       }
+      if (end == upperBound) break;
       i = end + 1;
     }
     return startOut != endOut;

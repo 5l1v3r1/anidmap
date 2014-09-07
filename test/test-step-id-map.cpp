@@ -10,11 +10,22 @@ using std::flush;
 
 typedef StepIdMap<MappedObject, HashMap<MappedObject, 4> > TheMapType;
 
+void TestHuge();
 void TestAddRemove();
 
 int main() {
+  TestHuge();
   TestAddRemove();
   return 0;
+}
+
+void TestHuge() {
+  cout << "testing StepIdMap::Add() [max limit] ... " << flush;
+  MappedObject obj0;
+  TheMapType map(IDENTIFIER_MAX);
+  map.Add(obj0);
+  assert(map.GetMap().Find(0) == &obj0);
+  cout << "passed!" << endl;
 }
 
 void TestAddRemove() {

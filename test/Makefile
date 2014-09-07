@@ -1,6 +1,6 @@
 CXXFLAGS=-std=c++11
 INCLUDES=-Idependencies/ansa/include -I../include -Iinclude
-SOURCES=dependencies/ansa/src/lock.cpp dependencies/ansa/src/atomic.cpp stdcpp-lock.cpp
+SOURCES=dependencies/ansa/src/lock.cpp stdcpp-lock.cpp
 
 all: build/pool-id-allocator build/hash-map build/step-id-allocator build/pool-id-map build/step-id-map
 

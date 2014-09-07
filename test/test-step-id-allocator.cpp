@@ -39,8 +39,8 @@ int main() {
 void TestBasicAlloc() {
   cout << "testing StepIdAllocator::Alloc() [basic] ... " << flush;
   
-  DummyIdFinder finder(0, 10);
-  StepIdAllocator allocator(finder, 10);
+  DummyIdFinder finder(0, IDENTIFIER_MAX);
+  StepIdAllocator allocator(finder, IDENTIFIER_MAX);
   
   for (Identifier i = 0; i < 9; ++i) {
     Identifier res;
